@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xadrez Responsivo</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .tabuleiro {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      aspect-ratio: 1/1;
+      width: 95vmin;
+      max-width: 700px;
+      max-height: 700px;
+      border: 2px solid black;
+    }
+
+    .casa {
+      aspect-ratio: 1/1;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3vmin;
+    }
+
+    .preta {
+      /background-color: #769656;/
+      background-color: rgb(148, 13, 13);
+    }
+
+    .branca {
+      /background-color: #eeeed2;/
+      background-color:rgb(192, 177, 39);
+    }
+
+    .peca-branca {
+      color: white; /* cinza claro */
+      font-size: 50px;
+    }
+
+    .peca-preta {
+      color: #000;
+      font-size: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="tabuleiro">
+  <!-- Linha 1 - peças pretas -->
+  <div class="casa branca"><span class="peca-preta">&#9820;</span></div>
+  <div class="casa preta"><span class="peca-preta">&#9822;</span></div>
+  <div class="casa branca"><span class="peca-preta">&#9821;</span></div>
+  <div class="casa preta"><span class="peca-preta">&#9819;</span></div>
+  <div class="casa branca"><span class="peca-preta">&#9818;</span></div>
+  <div class="casa preta"><span class="peca-preta">&#9821;</span></div>
+  <div class="casa branca"><span class="peca-preta">&#9822;</span></div>
+  <div class="casa preta"><span class="peca-preta">&#9820;</span></div>
+
+  <!-- Linha 2 - peões pretos -->
+  <div class="casa preta"><span class="peca-preta">&#9823;</span></div>
+  <div class="casa branca"><span class="peca-preta">&#9823;</span></div>
+  <div class="casa preta"><span class="peca-preta">&#9823;</span></div>
+  <div class="casa branca"><span class="peca-preta">&#9823;</span></div>
+  <div class="casa preta"><span class="peca-preta">&#9823;</span></div>
+  <div class="casa branca"><span class="peca-preta">&#9823;</span></div>
+  <div class="casa preta"><span class="peca-preta">&#9823;</span></div>
+  <div class="casa branca"><span class="peca-preta">&#9823;</span></div>
+
+  <!-- Linha 3 -->
+  <div class="casa branca"></div><div class="casa preta"></div>
+  <div class="casa branca"></div><div class="casa preta"></div>
+  <div class="casa branca"></div><div class="casa preta"></div>
+  <div class="casa branca"></div><div class="casa preta"></div>
+
+  <!-- Linha 4 -->
+  <div class="casa preta"></div><div class="casa branca"></div>
+  <div class="casa preta"></div><div class="casa branca"></div>
+  <div class="casa preta"></div><div class="casa branca"></div>
+  <div class="casa preta"></div><div class="casa branca"></div>
+
+  <!-- Linha 5 -->
+  <div class="casa branca"></div><div class="casa preta"></div>
+  <div class="casa branca"></div><div class="casa preta"></div>
+  <div class="casa branca"></div><div class="casa preta"></div>
+  <div class="casa branca"></div><div class="casa preta"></div>
+
+  <!-- Linha 6 -->
+  <div class="casa preta"></div><div class="casa branca"></div>
+  <div class="casa preta"></div><div class="casa branca"></div>
+  <div class="casa preta"></div><div class="casa branca"></div>
+  <div class="casa preta"></div><div class="casa branca"></div>
+
+  <!-- Linha 7 - peões brancos -->
+  <div class="casa branca"><span class="peca-branca">&#9817;</span></div>
+  <div class="casa preta"><span class="peca-branca">&#9817;</span></div>
+  <div class="casa branca"><span class="peca-branca">&#9817;</span></div>
+  <div class="casa preta"><span class="peca-branca">&#9817;</span></div>
+  <div class="casa branca"><span class="peca-branca">&#9817;</span></div>
+  <div class="casa preta"><span class="peca-branca">&#9817;</span></div>
+  <div class="casa branca"><span class="peca-branca">&#9817;</span></div>
+  <div class="casa preta"><span class="peca-branca">&#9817;</span></div>
+
+  <!-- Linha 8 - peças brancas -->
+  <div class="casa preta"><span class="peca-branca">&#9814;</span></div>
+  <div class="casa branca"><span class="peca-branca">&#9816;</span></div>
+  <div class="casa preta"><span class="peca-branca">&#9815;</span></div>
+  <div class="casa branca"><span class="peca-branca">&#9813;</span></div>
+  <div class="casa preta"><span class="peca-branca">&#9812;</span></div>
+  <div class="casa branca"><span class="peca-branca">&#9815;</span></div>
+  <div class="casa preta"><span class="peca-branca">&#9816;</span></div>
+  <div class="casa branca"><span class="peca-branca">&#9814;</span></div>
+</div>
+
+</body>
+</html>
