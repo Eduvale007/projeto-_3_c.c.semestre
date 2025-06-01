@@ -421,9 +421,11 @@ engine.quit()
 '''
 
 
+
 import pygame
 import chess
 import chess.engine
+import time
 
 # Configurações do tabuleiro
 TAMANHO = 600
@@ -434,6 +436,13 @@ BRANCO = (240, 217, 181)
 PRETO = (181, 136, 99)
 PRETO_PECA = (0, 0, 0)
 BRANCO_PECA = (255, 255, 255)
+
+pygame.init()
+pygame.mixer.init()  # Inicializa o mixer de áudio
+som_movimento = pygame.mixer.Sound("sounds/move.wav")
+som_start = pygame.mixer.Sound("sounds/game-start.wav")
+som_board_start = pygame.mixer.Sound('sounds/board-start.wav')
+
 
 pecas_unicode = {
     'P': '♙', 'R': '♖', 'N': '♘', 'B': '♗', 'Q': '♕', 'K': '♔',
@@ -475,15 +484,20 @@ def mostrar_resultado(texto):
 
 def contagem_regressiva(tela, fonte, tempo=3):
     for i in range(tempo, 0, -1):
+        som_start.play()
         tela.fill((0, 0, 0))  # fundo preto
         texto = fonte.render(str(i), True, (255, 255, 255))
         texto_rect = texto.get_rect(center=(TAMANHO // 2, TAMANHO // 2))
         tela.blit(texto, texto_rect)
         pygame.display.flip()
         pygame.time.delay(1000)  # espera 1 segundo
+     
+    som_board_start.play()
+ 
 
 STOCKFISH_PATH = "C:/Users/Eduardo/Desktop/3_semestre/Stockfish/stockfish-windows-x86-64-sse41-popcnt.exe"
 engine = chess.engine.SimpleEngine.popen_uci(STOCKFISH_PATH)
+
 
 def jogo():
     board = chess.Board()
@@ -506,11 +520,12 @@ def jogo():
                         contagem_regressiva(tela, fonte, 3)  # Contagem ao reiniciar
                     elif evento.key == pygame.K_q:  # Sair do jogo
                         rodando = False
-
+        time.sleep(1)
         if jogo_ativo:
             if not board.is_game_over():
                 result = engine.play(board, chess.engine.Limit(time=1.0))
                 board.push(result.move)
+                som_movimento.play()  #  Toca o som após cada jogada
                 desenhar_tabuleiro(board)
             else:
                 resultado = board.result()
@@ -526,5 +541,6 @@ def jogo():
 jogo()
 pygame.quit()
 engine.quit()
+
 
 
