@@ -1,0 +1,127 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+}
+
+.background {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-image: 
+    linear-gradient(45deg, black 25%, transparent 25%), 
+    linear-gradient(-45deg, black 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, black 75%),
+    linear-gradient(-45deg, transparent 75%, black 75%);
+  background-size: 100px 100px;
+  background-position: 0 0, 0 50px, 50px -50px, -50px 0px;
+}
+
+
+.menu {
+  text-align: center;
+  background-color: rgba(39, 39, 39, 0.85);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.logo {
+  height: 300px;
+  width: 350px;
+  margin-bottom: 100px;
+}
+
+h1 {
+  font-size: 32px;
+  color: #4b662f;
+  margin-bottom: 30px;
+}
+
+.btn {
+  font-family: 'Alfa Slab One', cursive;
+  display: block;
+  width: 180px;
+  margin: 10px auto;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(to right, #6da744, #3f5c2b);
+  color: black;
+  transition: transform 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.play {
+  width: 320px;
+  height: 70px;
+  font-size: 32px;
+}
+
+.options-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.options-content {
+  background-color: #b42dab;
+  padding: 30px;
+  border-radius: 20px;
+  width: 500px;
+  max-width: 90%;
+  color: white;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  text-align: left;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.options-content h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.options-content label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.options-content input[type="radio"] {
+  margin-right: 10px;
+}
+
+.options-content button {
+  font-family: 'Alfa Slab One', cursive;
+  display: block;
+  margin: 0 auto;
+  padding: 12px 25px;
+  background: linear-gradient(to right, #6da744, #3f5c2b);
+  color: black;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.options-content button:hover {
+  transform: scale(1.05);
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chessia</title>
+  <link rel="stylesheet" href="estilo.css" />
+
+<link rel="stylesheet" href="https://unpkg.com/chessboardjs@1.0.0/www/css/chessboard.css" />
+<script src="https://unpkg.com/chessboardjs@1.0.0/www/js/chessboard.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/1.0.0/chess.min.js"></script>
+
+</head>
+<body>
+  <div class="background">
+    <div class="menu">
+      <img src="/images/chessialogo.png" alt="Chessia Logo" class="logo" />
+      <button class="btn play" onclick="startGame('pvc')">PLAY</button>
+      <button class="btn options" onclick="toggleOptions()">OPTIONS</button>
+    </div>
+
+    
+    <div class="options-modal" id="optionsModal">
+      <div class="options-content">
+        <h2>Qual é o modo desejado?</h2><br>
+        <form id="modeForm">
+          <label><input type="radio" name="mode" value="pvp" required> Jogador VS Jogador</label><br>
+          <label><input type="radio" name="mode" value="pvc"> Jogador VS Inteligência Artificial</label><br>
+          <label><input type="radio" name="mode" value="cvc"> Inteligência Artificial VS Inteligência Artificial</label><br><br>
+          <button type="button" onclick="confirmOption()">Confirmar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="board" style="width: 400px; margin: auto; display: none;"></div>
+
+  <script>
+  let board = null;
+  let game = new Chess();
+
+  function startGame(mode) {
+    document.getElementById("board").style.display = "block";
+    
+    board = Chessboard('board', {
+      draggable: true,
+      position: 'start',
+      onDrop: function (source, target) {
+        const move = game.move({
+          from: source,
+          to: target,
+          promotion: 'q'
+        });
+
+        if (move === null) return 'snapback';
+
+        window.setTimeout(makeAIMove, 250);
+      }
+    });
+
+    if (mode === 'cvc') {
+      runCvcGame();
+    }
+  }
+
+  function makeAIMove() {
+    const possibleMoves = game.moves();
+    if (game.game_over() || possibleMoves.length === 0) return;
+
+    const move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+    game.move(move);
+    board.position(game.fen());
+  }
+
+  function runCvcGame() {
+    if (game.game_over()) return;
+    makeAIMove();
+    setTimeout(runCvcGame, 500);
+  }
+
+  function confirmOption() {
+    const selected = document.querySelector('input[name="mode"]:checked');
+    if (selected) {
+      const mode = selected.value;
+      document.getElementById('optionsModal').style.display = 'none';
+      startGame(mode);
+    } else {
+      alert("Por favor, selecione um modo.");
+    }
+  }
+</script>
+
+
+  <script>
+    function toggleOptions() {
+      const modal = document.getElementById('optionsModal');
+      modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function confirmOption() {
+      const selected = document.querySelector('input[name="mode"]:checked');
+      if (selected) {
+        alert("Modo selecionado: " + selected.value);
+        document.getElementById('optionsModal').style.display = 'none';
+      } else {
+        alert("Por favor, selecione um modo.");
+      }
+    }
+  </script>
+
+</body>
+</html>
